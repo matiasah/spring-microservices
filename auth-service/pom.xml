@@ -14,6 +14,8 @@
     <description>Microservice for authorization &amp; authentication</description>
     <properties>
         <java.version>11</java.version>
+        <maven.compiler.source>11</maven.compiler.source>
+        <maven.compiler.target>11</maven.compiler.target>
         <spring-cloud.version>2020.0.3</spring-cloud.version>
     </properties>
 
