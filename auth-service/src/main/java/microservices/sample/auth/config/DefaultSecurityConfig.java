@@ -11,7 +11,8 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.provisioning.InMemoryUserDetailsManager;
 import org.springframework.security.web.SecurityFilterChain;
 
-import static org.springframework.security.config.Customizer.withDefaults;
+import static org.springframework.security.web.authentication.ui.DefaultLoginPageGeneratingFilter.DEFAULT_LOGIN_PAGE_URL;
+import static org.springframework.security.web.authentication.ui.DefaultLoginPageGeneratingFilter.ERROR_PARAMETER_NAME;
 
 @EnableWebSecurity
 public class DefaultSecurityConfig {
@@ -22,9 +23,13 @@ public class DefaultSecurityConfig {
             .csrf().disable()
             .authorizeRequests()
                 .anyRequest()
-                    .authenticated()
+                    .permitAll()
                 .and()
-            .formLogin(withDefaults())
+            .formLogin()
+                .permitAll()
+                .loginPage(DEFAULT_LOGIN_PAGE_URL)
+                .failureUrl(DEFAULT_LOGIN_PAGE_URL + "?" + ERROR_PARAMETER_NAME + "=true")
+                .and()
             .build();
     }
 
