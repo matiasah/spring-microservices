@@ -9,6 +9,13 @@ services:
         restart: unless-stopped
         ports:
             - "8080:8080"
+        volumes:
+            - ./auth-service/src/:/opt/auth-service/src/
+        networks:
+            backend:
+                aliases:
+                    - auth-service
 
 networks:
-    backend: 
+    backend:
+        name: backend
