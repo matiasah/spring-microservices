@@ -21,6 +21,7 @@ import org.springframework.security.oauth2.server.authorization.OAuth2Authorizat
 import org.springframework.security.oauth2.server.authorization.client.InMemoryRegisteredClientRepository;
 import org.springframework.security.oauth2.server.authorization.client.RegisteredClient;
 import org.springframework.security.oauth2.server.authorization.client.RegisteredClientRepository;
+import org.springframework.security.oauth2.server.authorization.config.ClientSettings;
 import org.springframework.security.oauth2.server.authorization.config.ProviderSettings;
 import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.authentication.LoginUrlAuthenticationEntryPoint;
@@ -76,8 +77,9 @@ public class AuthorizationServerConfig {
                 .authorizationGrantType(AuthorizationGrantType.CLIENT_CREDENTIALS)
                 .redirectUri("https://developers.google.com/oauthplayground")
                 .redirectUri("https://openidconnect.net/callback")
-                .clientSettings(clientSettings -> clientSettings.requireUserConsent(true))
-                .scope(OidcScopes.OPENID).build();
+                .clientSettings(ClientSettings.builder().requireAuthorizationConsent(true).build())
+                .scope(OidcScopes.OPENID)
+                .scope(OidcScopes.PROFILE).build();
         return new InMemoryRegisteredClientRepository(registeredClient);
     }
 
@@ -110,7 +112,9 @@ public class AuthorizationServerConfig {
 
     @Bean
     public ProviderSettings providerSettings() {
-        return new ProviderSettings().issuer("http://127.0.0.1:8080");
+        return ProviderSettings.builder()
+            .issuer("http://127.0.0.1:8080")
+            .build();
     }
 
     @Bean
