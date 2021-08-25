@@ -9,7 +9,7 @@ const routes: Routes = [
         component: LoginComponent,
     },
     {
-        path: 'oauth2/consent',
+        path: 'consent',
         component: AuthorizeComponent
     }
 ];

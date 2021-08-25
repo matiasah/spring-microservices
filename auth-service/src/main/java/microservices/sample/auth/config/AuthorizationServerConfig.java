@@ -44,7 +44,7 @@ public class AuthorizationServerConfig {
 				new OAuth2AuthorizationServerConfigurer<>();
 		authorizationServerConfigurer
 				.authorizationEndpoint(authorizationEndpoint ->
-						authorizationEndpoint.consentPage("/oauth2/consent"));
+						authorizationEndpoint.consentPage("/consent"));
 
 		RequestMatcher endpointsMatcher = authorizationServerConfigurer
 				.getEndpointsMatcher();
