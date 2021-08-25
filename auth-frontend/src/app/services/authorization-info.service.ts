@@ -21,7 +21,7 @@ export class AuthorizationInfoService {
      * @param state The state to get authorization info for.
      * @returns The authorization info.
     */
-    public getAuthorizationInfo(scope: string, clientId: string, state: string): Observable<any> {
+    public getAuthorizationInfo(scope: string, clientId: string, state: string): Observable<AuthorizationInfo> {
         // Initialize HTTP Params
         const params: HttpParams = new HttpParams()
             .set('scope', scope)
