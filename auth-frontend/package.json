@@ -20,10 +20,10 @@
     "@angular/platform-browser": "~12.1.0-",
     "@angular/platform-browser-dynamic": "~12.1.0-",
     "@angular/router": "~12.1.0-",
-    "autoprefixer": "^10.3.1",
+    "autoprefixer": "^10.3.3",
     "postcss": "^8.3.6",
     "rxjs": "~6.6.0",
-    "tailwindcss": "^2.2.7",
+    "tailwindcss": "^2.2.8",
     "tslib": "^2.2.0",
     "zone.js": "~0.11.4"
   },
