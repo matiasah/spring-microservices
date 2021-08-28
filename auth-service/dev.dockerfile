@@ -13,6 +13,9 @@ RUN ./mvnw dependency:go-offline
 # Copy sources
 COPY src ./src
 
+# Copy frontend
+COPY auth-frontend /opt/auth-service/auth-frontend
+
 # Expose port 8080
 EXPOSE 8080
 
