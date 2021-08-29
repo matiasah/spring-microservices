@@ -9,14 +9,14 @@
                             <img src="assets/img/logo.png" alt="Logo"/>
                         </div>
                         <div class="flex flex-col justify-center items-center">
-                            <h2 class="mat-h2 mb-0">Iniciar sesión</h2>
+                            <h2 class="mat-h2 mb-0">Log in</h2>
                         </div>
                     </div>
 
                     <div *ngIf="incorrecto" class="w-full mb-3">
                         <div class="flex justify-center">
                             <mat-card class="mat-elevation-z1 bg-warn">
-                                Usuario o contraseña son incorrectos.
+                                Username or password may be invalid.
                             </mat-card>
                         </div>
                     </div>
@@ -27,30 +27,30 @@
 
                             <mat-form-field class="col-span-12" appearance="fill">
                                 <input matInput type="text" name="username" #usernameForm="ngModel"
-                                    [(ngModel)]="username" required placeholder="Nombre de usuario">
+                                    [(ngModel)]="username" required placeholder="User name">
                                 <mat-icon class="mr-2" matPrefix>perm_identity</mat-icon>
                                 <mat-error *ngIf="usernameForm.hasError('required')">
-                                    El campo es obligatorio
+                                    Field is mandatory
                                 </mat-error>
                                 <mat-error *ngIf="usernameForm.hasError('email')">
-                                    Debe ser un correo válido
+                                    Must be a valid email
                                 </mat-error>
                             </mat-form-field>
 
                             <mat-form-field class="col-span-12" appearance="fill">
                                 <input matInput type="password" name="password" #passwordForm="ngModel"
-                                    [(ngModel)]="password" required placeholder="Contraseña">
+                                    [(ngModel)]="password" required placeholder="Password">
                                 <mat-icon class="mr-2" matPrefix>lock</mat-icon>
                                 <mat-error *ngIf="passwordForm.hasError('required')">
-                                    El campo es obligatorio
+                                    Field is mandatory
                                 </mat-error>
                             </mat-form-field>
 
                             <div class="flex justify-center col-span-12 mt-2">
 
                                 <!-- Botón de inicio de sesión -->
-                                <button mat-raised-button id="botonIngresar" type="submit" color="primary">
-                                    Acceder
+                                <button mat-raised-button id="loginButton" type="submit" color="primary">
+                                    Log in
                                 </button>
                             </div>
 

@@ -9,7 +9,7 @@
                             <img src="assets/img/logo.png" alt="Logo" />
                         </div>
                         <div class="flex flex-col justify-center items-center">
-                            <h2 class="mat-h2 mb-0">Autorizar aplicación</h2>
+                            <h2 class="mat-h2 mb-0">Authorize application</h2>
                         </div>
                     </div>
 
@@ -21,39 +21,31 @@
                     <div class="grid grid-cols-12 w-full" *ngIf="authorizationInfo">
 
                         <div class="flex justify-center col-span-12">
-                            <span>¿Deseas autorizar <strong>{{ authorizationInfo.client.clientId }}</strong> para ocupar
-                                tu cuenta de usuario?</span>
+                            <span>Would you like to authorize <strong>{{ authorizationInfo.client.clientId }}</strong> to use your user account?</span>
                         </div>
 
                         <div class="flex justify-center col-span-12 mt-4">
 
-                            <!-- Botón de inicio de sesión -->
-                            <div class="mr-2">
-                                <form ngNoForm [action]="authorizeUrl" method="post">
-                                    <input name="client_id" [value]="authorizationInfo.client.clientId" type="hidden" />
-                                    <input name="state" [value]="authorizationInfo.state" type="hidden" />
+                            <form ngNoForm [action]="authorizeUrl" method="post">
+                                <input name="client_id" [value]="authorizationInfo.client.clientId" type="hidden" />
+                                <input name="state" [value]="authorizationInfo.state" type="hidden" />
 
-                                    <div class="col-span-12" *ngFor="let scope of authorizationInfo.scopes">
+                                <mat-list>
+                                    <mat-list-item *ngFor="let scope of authorizationInfo.scopes">
                                         <mat-checkbox name="scope" [value]="scope">
                                             {{scope}}
                                         </mat-checkbox>
-                                    </div>
+                                    </mat-list-item>
+                                </mat-list>
 
-                                    <button mat-raised-button type="submit" color="primary">
-                                        Autorizar
-                                    </button>
-                                </form>
-                            </div>
+                                <button mat-raised-button type="submit" color="primary">
+                                    Autorizar
+                                </button>
 
-                            <!-- Botón de inicio de sesión -->
-                            <div class="ml-2">
-                                <form ngNoForm [action]="authorizeUrl" method="post">
-                                    <input name="user_oauth_approval" value="false" type="hidden" />
-                                    <button mat-raised-button type="submit" color="warn">
-                                        Denegar
-                                    </button>
-                                </form>
-                            </div>
+                                <button mat-raised-button type="reset" color="warn">
+                                    Denegar
+                                </button>
+                            </form>
 
                         </div>
 
