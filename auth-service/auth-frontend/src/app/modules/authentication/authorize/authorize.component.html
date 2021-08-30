@@ -38,13 +38,24 @@
                                     </mat-list-item>
                                 </mat-list>
 
-                                <button mat-raised-button type="submit" color="primary">
-                                    Autorizar
-                                </button>
+                                <div class="flex justify-center mt-4">
 
-                                <button mat-raised-button type="reset" color="warn">
-                                    Denegar
-                                </button>
+                                    <!-- Button on the left -->
+                                    <div class="flex flex-col items-center">
+                                        <button mat-raised-button type="submit" color="primary">
+                                            Authorize
+                                        </button>
+                                    </div>
+
+                                    <!-- Button on the right -->
+                                    <div class="flex flex-col items-center">
+                                        <button mat-raised-button type="reset" color="warn">
+                                            Decline
+                                        </button>
+                                    </div>
+                                    
+                                </div>
+
                             </form>
 
                         </div>
