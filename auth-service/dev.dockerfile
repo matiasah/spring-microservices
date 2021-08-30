@@ -8,7 +8,7 @@ COPY .mvn/ .mvn
 COPY mvnw pom.xml ./
 
 # Install dependencies
-RUN ./mvnw dependency:go-offline
+RUN ./mvnw dependency:resolve dependency:go-offline dependency:resolve-plugins
 
 # Copy sources
 COPY src ./src
