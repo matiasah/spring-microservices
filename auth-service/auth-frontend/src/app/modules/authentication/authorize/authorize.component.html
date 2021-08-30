@@ -24,9 +24,9 @@
                             <span>Would you like to authorize <strong>{{ authorizationInfo.client.clientId }}</strong> to use your user account?</span>
                         </div>
 
-                        <div class="flex justify-center col-span-12 mt-4">
+                        <div class="flex justify-center col-span-12">
 
-                            <form ngNoForm [action]="authorizeUrl" method="post">
+                            <form ngNoForm [action]="authorizeUrl" method="post" class="w-full">
                                 <input name="client_id" [value]="authorizationInfo.client.clientId" type="hidden" />
                                 <input name="state" [value]="authorizationInfo.state" type="hidden" />
 
