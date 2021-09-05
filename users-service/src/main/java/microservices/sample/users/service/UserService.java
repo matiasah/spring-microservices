@@ -11,8 +11,14 @@ public class UserService {
     @Autowired
     private UserRepository userRepository;
 
-    public void save(User user) {}
+    public void save(User user) {
+        // Save object to database
+        this.userRepository.save(user);
+    }
 
-    public void delete(User user) {}
+    public void delete(User user) {
+        // Delete object from database
+        this.userRepository.delete(user);
+    }
     
 }
