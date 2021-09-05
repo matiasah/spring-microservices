@@ -12,6 +12,7 @@
     <version>0.0.1</version>
     <name>Authorization Service</name>
     <description>Microservice for authorization &amp; authentication</description>
+    
     <properties>
         <java.version>11</java.version>
         <maven.compiler.source>11</maven.compiler.source>
