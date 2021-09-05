@@ -1,5 +1,6 @@
 package microservices.sample.users.repository;
 
+import java.util.Optional;
 import com.querydsl.core.types.dsl.NumberPath;
 import com.querydsl.core.types.dsl.StringPath;
 import org.springframework.data.mongodb.repository.MongoRepository;
@@ -10,6 +11,8 @@ import microservices.sample.users.model.User;
 import microservices.sample.users.model.QUser;
 
 public interface UserRepository extends MongoRepository<User, String>, QuerydslPredicateExecutor<User>, QuerydslBinderCustomizer<QUser> {
+
+    public Optional<User> findByUsername(String username);
 
     @Override
     public default void customize(QuerydslBindings bindings, QUser qModel) {
