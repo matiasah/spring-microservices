@@ -13,10 +13,16 @@
 	<version>0.0.1-SNAPSHOT</version>
 	<name>Users Service</name>
 	<description>Microservice for users</description>
+
 	<properties>
 		<java.version>11</java.version>
+        <maven.compiler.source>11</maven.compiler.source>
+        <maven.compiler.target>11</maven.compiler.target>
 		<spring-cloud.version>2020.0.3</spring-cloud.version>
+
+        <querydsl.version>5.0.0</querydsl.version>
 	</properties>
+
 	<dependencies>
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
@@ -35,6 +41,21 @@
 			<artifactId>spring-cloud-starter-consul-discovery</artifactId>
 		</dependency>
 
+        <dependency>
+            <groupId>com.querydsl</groupId>
+            <artifactId>querydsl-apt</artifactId>
+            <version>${querydsl.version}</version>
+        </dependency>
+		<dependency>
+            <groupId>com.querydsl</groupId>
+            <artifactId>querydsl-core</artifactId>
+            <version>${querydsl.version}</version>
+        </dependency>
+		<dependency>
+            <groupId>com.querydsl</groupId>
+            <artifactId>querydsl-mongodb</artifactId>
+            <version>${querydsl.version}</version>
+        </dependency>
 		<dependency>
 			<groupId>org.projectlombok</groupId>
 			<artifactId>lombok</artifactId>
@@ -46,6 +67,7 @@
 			<scope>test</scope>
 		</dependency>
 	</dependencies>
+
 	<dependencyManagement>
 		<dependencies>
 			<dependency>
