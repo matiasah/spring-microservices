@@ -28,24 +28,51 @@ import microservices.sample.users.model.User;
 import microservices.sample.users.repository.UserRepository;
 import microservices.sample.users.service.UserService;
 
+/**
+ * User controller.
+ * 
+ * @author Matías Hermosilla
+ * @since 05-09-2021
+ */
 @RestController
 public class UserController {
 
+    /**
+     * User repository.
+     */
     @Autowired
     private UserRepository userRepository;
 
+    /**
+     * User service.
+     */
     @Autowired
     private UserService userService;
 
+    /**
+     * Password encoder.
+     */
     @Autowired
     private PasswordEncoder passwordEncoder;
 
+    /**
+     * Jackson object mapper.
+     */
     @Autowired
     private ObjectMapper objectMapper;
 
+    /**
+     * Spring validator.
+     */
     @Autowired
     private SpringValidatorAdapter validator;
 
+    /**
+     * Get all users.
+     * 
+     * @param predicate Predicate to filter users.
+     * @return List of users.
+     */
     @GetMapping
     public Iterable<User> index(@QuerydslPredicate(root = User.class) Predicate predicate) {
 
@@ -60,6 +87,13 @@ public class UserController {
         return this.userRepository.findAll();
     }
 
+    /**
+     * Get a page of users.
+     * 
+     * @param predicate Predicate to filter users.
+     * @param pageable Pageable object to paginate users.
+     * @return Page of users.
+     */
     @GetMapping("page")
     public Page<User> page(@QuerydslPredicate(root = User.class) Predicate predicate, Pageable pageable) {
 
@@ -74,6 +108,12 @@ public class UserController {
         return this.userRepository.findAll(pageable);
     }
 
+    /**
+     * Finds a user by id.
+     * 
+     * @param id User id.
+     * @return User.
+     */
     @GetMapping("{id}")
     public ResponseEntity<User> get(@PathVariable("id") String id) {
 
@@ -94,6 +134,13 @@ public class UserController {
         return new ResponseEntity<>(user, HttpStatus.OK);
     }
 
+    /**
+     * Saves a new user.
+     * 
+     * @param user User to save.
+     * @return User.
+     * @throws BindException If the user is not valid.
+     */
     @PostMapping
     public ResponseEntity<User> save(@RequestBody User user) throws BindException {
 
@@ -134,6 +181,15 @@ public class UserController {
         return new ResponseEntity<>(user, HttpStatus.CREATED);
     }
 
+    /**
+     * Patches a existing user.
+     * 
+     * @param user User to patch.
+     * @param request Request object containing patch data.
+     * @return User.
+     * @throws IOException If the patch data is not valid.
+     * @throws BindException If the patched user is not valid.
+     */
     @PatchMapping("{id}")
     public ResponseEntity<User> patch(@PathVariable("id") User user, HttpServletRequest request) throws IOException, BindException {
 
@@ -168,6 +224,12 @@ public class UserController {
         return new ResponseEntity<>(user, HttpStatus.OK);
     }
 
+    /**
+     * Deletes a user by id.
+     * 
+     * @param id User id.
+     * @return User.
+     */
     @DeleteMapping("{id}")
     public ResponseEntity<Void> delete(@PathVariable("id") String id) {
         // Search object

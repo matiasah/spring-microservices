@@ -10,8 +10,20 @@ import org.springframework.data.querydsl.binding.QuerydslBindings;
 import microservices.sample.users.model.User;
 import microservices.sample.users.model.QUser;
 
+/**
+ * Spring Data MongoDB repository for the User entity.
+ * 
+ * @author Matías Hermosilla
+ * @since 05-09-2021
+ */
 public interface UserRepository extends MongoRepository<User, String>, QuerydslPredicateExecutor<User>, QuerydslBinderCustomizer<QUser> {
 
+    /**
+     * Finds a user by its username.
+     * 
+     * @param username the username to search for.
+     * @return the user optional if found, otherwise empty optional.
+     */
     public Optional<User> findByUsername(String username);
 
     @Override
