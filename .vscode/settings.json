@@ -1,3 +1,4 @@
 {
-    "maven.executable.options": "-Plocal"
+    "maven.executable.options": "-Plocal",
+    "java.configuration.updateBuildConfiguration": "interactive"
 }
