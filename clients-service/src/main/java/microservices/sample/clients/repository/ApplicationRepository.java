@@ -11,7 +11,7 @@ import microservices.sample.clients.model.Application;
 import microservices.sample.clients.model.QApplication;
 
 /**
- * Repository for {@link Application}
+ * Repository for {@link Application}s.
  * 
  * @author Matías Hermosilla
  * @since 04-09-2021
