@@ -1,13 +1,13 @@
 package microservices.sample.groups.repository;
 
-import com.querydsl.core.group.Group;
-import com.querydsl.core.group.QGroup;
 import com.querydsl.core.types.dsl.NumberPath;
 import com.querydsl.core.types.dsl.StringPath;
 import org.springframework.data.mongodb.repository.MongoRepository;
 import org.springframework.data.querydsl.QuerydslPredicateExecutor;
 import org.springframework.data.querydsl.binding.QuerydslBinderCustomizer;
 import org.springframework.data.querydsl.binding.QuerydslBindings;
+import microservices.sample.groups.model.Group;
+import microservices.sample.groups.model.QGroup;
 
 /**
  * Repository for {@link Group}s.

@@ -1,8 +1,8 @@
 package microservices.sample.groups.service;
 
-import com.querydsl.core.group.Group;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import microservices.sample.groups.model.Group;
 import microservices.sample.groups.repository.GroupRepository;
 
 /**
