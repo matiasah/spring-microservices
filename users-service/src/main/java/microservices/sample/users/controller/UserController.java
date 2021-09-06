@@ -182,7 +182,7 @@ public class UserController {
     }
 
     /**
-     * Patches a existing user.
+     * Patches an existing user.
      * 
      * @param user User to patch.
      * @param request Request object containing patch data.
@@ -228,7 +228,7 @@ public class UserController {
      * Deletes a user by id.
      * 
      * @param id User id.
-     * @return User.
+     * @return Nothing.
      */
     @DeleteMapping("{id}")
     public ResponseEntity<Void> delete(@PathVariable("id") String id) {
