@@ -34,7 +34,7 @@ public class Application {
 	private String clientId;
 
     /**
-     * The instant when the application was created.
+     * The instant when the client id was generated.
      */
 	private Instant clientIdIssuedAt;
 
