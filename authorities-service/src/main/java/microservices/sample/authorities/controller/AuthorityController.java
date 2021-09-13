@@ -134,7 +134,7 @@ public class AuthorityController {
     @PostMapping
     public ResponseEntity<Authority> save(@RequestBody Authority authority) throws BindException {
 
-        // Remove Id property
+        // Remove id
         authority.setId(null);
 
         // Create validation object
