@@ -143,6 +143,9 @@ public class ApplicationController {
     @PostMapping
     public ResponseEntity<Application> save(@RequestBody Application application) throws BindException {
 
+        // Remove id
+        application.setId(null);
+
         // Search object
         Optional<Application> optApplication = this.applicationRepository.findByClientId(application.getClientId());
 
