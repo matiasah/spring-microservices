@@ -29,6 +29,9 @@ import microservices.sample.authorities.service.AuthorityService;
 
 /**
  * Rest controller for authorities.
+ * 
+ * @author Matías Hermosilla
+ * @since 12-09-2021
  */
 @RestController
 public class AuthorityController {

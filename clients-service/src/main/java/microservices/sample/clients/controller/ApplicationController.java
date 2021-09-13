@@ -32,6 +32,7 @@ import microservices.sample.clients.service.ApplicationService;
  * Rest controller for applications.
  * 
  * @author Matías Hermosilla
+ * @since 05-09-2021
  */
 @RestController
 public class ApplicationController {
