@@ -144,6 +144,9 @@ public class UserController {
     @PostMapping
     public ResponseEntity<User> save(@RequestBody User user) throws BindException {
 
+        // Remove id
+        user.setId(null);
+
         // Search object
         Optional<User> optUser = this.userRepository.findByUsername(user.getUsername());
 
