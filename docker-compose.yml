@@ -2,20 +2,135 @@ version: '3.7'
 
 services:
 
-    auth-service:
-        build:
-            context: auth-service
-            dockerfile: dev.dockerfile
-        restart: unless-stopped
-        ports:
-            - "8080:8080"
-        volumes:
-            - ./auth-service/src/:/opt/auth-service/src/
-        networks:
-            backend:
-                aliases:
-                    - auth-service
+  # Discovery service
+  consul:
+    image: consul:1.8.4
+    ports:
+      - "8500:8500"
+    expose:
+      - "8500"
+    networks:
+      # eth0
+      backend:
+        aliases:
+          - consul
+    volumes:
+      - type: volume
+        source: consul-data
+        target: /consul/data
+    environment:
+      - CONSUL_ALLOW_PRIVILEGED_PORTS=yes
+      - TZ=America/Santiago
+
+  # Authorization service
+  auth-service:
+    build:
+      context: auth-service
+      dockerfile: dev.dockerfile
+    restart: unless-stopped
+    ports:
+      - "8080:8080"
+    volumes:
+      - ./auth-service/src/:/opt/backend/src/
+      - ~/.m2/repository/:/root/.m2/repository/
+    networks:
+      backend:
+        aliases:
+          - auth-service
+    environment:
+      TZ: America/Santiago
+      spring.profiles.active: dev
+      spring.cloud.consul.host: consul
+      spring.cloud.consul.port: 8500
+  
+  # Authorities service
+  authorities-service:
+    build:
+      context: authorities-service
+      dockerfile: dev.dockerfile
+    restart: unless-stopped
+    ports:
+      - "8081:8080"
+    volumes:
+      - ./authorities-service/src/:/opt/backend/src/
+      - ~/.m2/repository/:/root/.m2/repository/
+    networks:
+      backend:
+        aliases:
+          - authorities-service
+    environment:
+      TZ: America/Santiago
+      spring.profiles.active: dev
+      spring.cloud.consul.host: consul
+      spring.cloud.consul.port: 8500
+  
+  # Clients service
+  clients-service:
+    build:
+      context: clients-service
+      dockerfile: dev.dockerfile
+    restart: unless-stopped
+    ports:
+      - "8082:8080"
+    volumes:
+      - ./clients-service/src/:/opt/backend/src/
+      - ~/.m2/repository/:/root/.m2/repository/
+    networks:
+      backend:
+        aliases:
+          - clients-service
+    environment:
+      TZ: America/Santiago
+      spring.profiles.active: dev
+      spring.cloud.consul.host: consul
+      spring.cloud.consul.port: 8500
+  
+  # Groups service
+  groups-service:
+    build:
+      context: groups-service
+      dockerfile: dev.dockerfile
+    restart: unless-stopped
+    ports:
+      - "8083:8080"
+    volumes:
+      - ./groups-service/src/:/opt/backend/src/
+      - ~/.m2/repository/:/root/.m2/repository/
+    networks:
+      backend:
+        aliases:
+          - clients-service
+    environment:
+      TZ: America/Santiago
+      spring.profiles.active: dev
+      spring.cloud.consul.host: consul
+      spring.cloud.consul.port: 8500
+  
+  # Users service
+  users-service:
+    build:
+      context: users-service
+      dockerfile: dev.dockerfile
+    restart: unless-stopped
+    ports:
+      - "8084:8080"
+    volumes:
+      - ./users-service/src/:/opt/backend/src/
+      - ~/.m2/repository/:/root/.m2/repository/
+    networks:
+      backend:
+        aliases:
+          - clients-service
+    environment:
+      TZ: America/Santiago
+      spring.profiles.active: dev
+      spring.cloud.consul.host: consul
+      spring.cloud.consul.port: 8500
 
 networks:
-    backend:
-        name: backend
+  backend:
+    name: backend
+
+volumes:
+  consul-data:
+    name: consul-data
