@@ -10,11 +10,8 @@ COPY mvnw pom.xml ./
 # Copy sources
 COPY src ./src
 
-# Copy frontend
-COPY auth-frontend /opt/backend/auth-frontend
-
 # Expose port 8080
 EXPOSE 8080
 
 # Run application
-CMD ["./mvnw", "spring-boot:run", "-Dspring.profiles.active=dev"]
+CMD ["./mvnw", "spring-boot:run"]
