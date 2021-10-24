@@ -2,6 +2,21 @@ version: '3.7'
 
 services:
 
+  # Frontend
+  frontend:
+    build:
+      context: frontend
+      dockerfile: dev.dockerfile
+    restart: unless-stopped
+    ports:
+      - "4200:4200"
+    volumes:
+      - type: bind
+        source: ./frontend
+        target: /opt/frontend
+    environment:
+      TZ: America/Santiago
+
   # Discovery service
   consul:
     image: consul:1.8.4
