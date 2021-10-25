@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { Event as RouterEvent, NavigationCancel, NavigationEnd, NavigationError, NavigationStart, Router } from '@angular/router';
+import { Event, NavigationCancel, NavigationEnd, NavigationError, NavigationStart, Router } from '@angular/router';
 
 @Component({
     selector: 'app-root',
@@ -17,7 +17,7 @@ export class AppComponent {
 
         // Subscribe to router events
         this.router.events.subscribe(
-            (event: RouterEvent) => {
+            (event: Event) => {
 
                 // Event received
                 if (event instanceof NavigationStart) {
